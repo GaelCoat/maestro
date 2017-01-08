@@ -1,0 +1,91 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Le sel
+  link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
+  link(href="css/normalize.css", rel="stylesheet", type="text/css")
+  link(href="css/main.css", rel="stylesheet", type="text/css")
+body
+  header#header
+    ul.links
+      li.current Accueil
+      li Videos
+      li Stats
+      li My Team
+      li News
+    aside#social
+      a(href="https://www.facebook.com/FlorianThauvin/?fref=ts")
+        i.fa.fa-facebook
+      a(href="https://twitter.com/FlorianThauvin")
+        i.fa.fa-twitter
+      a(href="https://www.instagram.com/flotov/")
+        i.fa.fa-instagram
+  section#home
+    ul.cool-shit
+      li.stripe
+      li.stripe
+      li.stripe
+      li.stripe
+      li.stripe
+    img#mask(src="/img/mask.png")
+    .align
+    .row
+      h1
+        span Florian
+      h1
+        span Thauvin
+
+  section#videos
+    .align
+    .row
+      h2.title Videos
+      ul.all
+        li(video-id="TtvoXXT3YN0")
+          .overlay
+            i.fa.fa-play-circle
+        li(video-id="Sve-ygFRen8")
+          .overlay
+            i.fa.fa-play-circle
+        li(video-id="8hrCb9pRiOY")
+          .overlay
+            i.fa.fa-play-circle
+        li(video-id="3wV-4Ri--Zs")
+          .overlay
+            i.fa.fa-play-circle
+        li(video-id="DqmtONV6bAw")
+          .overlay
+            i.fa.fa-play-circle
+        li(video-id="jmm86i8DkLs")
+          .overlay
+            i.fa.fa-play-circle
+
+  section#stats
+    .align
+    .row
+      h2.title Stats
+      #table
+
+  section#team
+    ul.cool-shit
+      li.stripe
+      li.stripe
+      li.stripe
+      li.stripe
+      li.stripe
+    .align
+    .row
+      h2.title My Team
+      #brands
+        .col
+        .col
+          .cubes
+          .cubes
+          .cubes
+          .cubes
+
+include ./templates
+
+//- Webpack Bundles
+script(src='/vendor.bundle.js')
+script(src='/app.bundle.js')
+
