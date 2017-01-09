@@ -5,20 +5,21 @@ head
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
+  link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body
   header#header
     ul.links
-      li.current Accueil
-      li Videos
-      li Stats
-      li My Team
-      li News
+      li.current(anchor='home') Accueil
+      li(anchor='videos') Videos
+      li(anchor='stats') Stats
+      li(anchor='team') My Team
+      li(anchor='news') News
     aside#social
-      a(href="https://www.facebook.com/FlorianThauvin/?fref=ts")
+      a(href="https://www.facebook.com/FlorianThauvin/?fref=ts", target="_blank")
         i.fa.fa-facebook
-      a(href="https://twitter.com/FlorianThauvin")
+      a(href="https://twitter.com/FlorianThauvin", target="_blank")
         i.fa.fa-twitter
-      a(href="https://www.instagram.com/flotov/")
+      a(href="https://www.instagram.com/flotov/", target="_blank")
         i.fa.fa-instagram
   section#home
     ul.cool-shit
@@ -27,7 +28,9 @@ body
       li.stripe
       li.stripe
       li.stripe
-    img#mask(src="/img/mask.png")
+    //-img#mask(src="/img/mask.png")
+    .video-wrapper
+      video#mask(autoplay, loop, src="/img/helo.mp4")
     .align
     .row
       h1
@@ -40,24 +43,30 @@ body
     .row
       h2.title Videos
       ul.all
-        li(video-id="TtvoXXT3YN0")
+        li(video-url="http://www.youtube.com/embed/TtvoXXT3YN0")
           .overlay
             i.fa.fa-play-circle
-        li(video-id="Sve-ygFRen8")
+          .name Chanson à la gloire de Thauvin
+        li(video-url="http://www.youtube.com/embed/M0BzNfr9gr8")
           .overlay
             i.fa.fa-play-circle
-        li(video-id="8hrCb9pRiOY")
+          .name Goals, Skills and Assists 2016
+        li(video-url="http://www.youtube.com/embed/8hrCb9pRiOY")
           .overlay
             i.fa.fa-play-circle
-        li(video-id="3wV-4Ri--Zs")
+          .name Reportage Bein OM champion d'automne
+        li(video-url="http://www.youtube.com/embed/3wV-4Ri--Zs")
           .overlay
             i.fa.fa-play-circle
-        li(video-id="DqmtONV6bAw")
+          .name Goals, Skills and Assists 2013 - 2014
+        li(video-url="//www.dailymotion.com/embed/video/xtqypr_portrait-de-florian-thauvin_sport")
           .overlay
             i.fa.fa-play-circle
-        li(video-id="jmm86i8DkLs")
+          .name Bastia, Portrait de Florian Thauvin
+        li(video-url="//www.dailymotion.com/embed/video/x1018lg")
           .overlay
             i.fa.fa-play-circle
+          .name Thauvin élu meilleur espoir de ligue 1
 
   section#stats
     .align
@@ -82,6 +91,61 @@ body
           .cubes
           .cubes
           .cubes
+
+  section#news
+    .row
+      h2.title News
+      #grid(data-columns)
+        .wrap
+          img(src='/img/temp/1.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/2.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/3.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/4.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/7.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/5.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/6.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/8.jpg')
+          .ripple
+            .overlay
+            .alright
+        .wrap
+          img(src='/img/temp/10.jpg')
+          .ripple
+            .overlay
+            .alright
+
+  footer
+    .row
+      span Patrick l'étoile - Copiright 2017
+
 
 include ./templates
 

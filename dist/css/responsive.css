@@ -1,0 +1,161 @@
+@media screen and (max-width: 1320px) {
+
+  #home video {
+    mask-position: 123% 0%;
+    -webkit-mask-position: 123% 0%;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+
+  #home {
+    border: 20px solid #fff;
+  }
+
+  #header {
+    padding: 20px;
+    padding-bottom: 0;
+  }
+
+  #header ul {
+    padding: 20px;
+    padding-bottom: 0;
+  }
+
+  #header #social {
+    top: 20px;
+  }
+
+  #home .video-wrapper {
+    top: -20px;
+  }
+
+  #videos ul li:before {
+    padding-top: 63%;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+
+  .row {
+    width: 90%;
+  }
+
+  h2.title {
+    font-size: 17vw;
+    top: -6.2vw;
+  }
+
+  body.modal-open {
+    padding-right: 0;
+  }
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ HOME
+  /* ---------------------------------------------------------- */
+  #home {
+    border: 0;
+  }
+
+  #home h1 {
+    font-size: 16vw;
+    line-height: 16vw;
+    height: 16vw;
+  }
+
+  #home h1 span {
+    line-height: 16vw;
+  }
+
+  #home video {
+    mask-position: 159% 0%;
+    -webkit-mask-position: 159% 0%;
+    margin-right: -10%;
+  }
+
+  #home .video-wrapper {
+    top: 0px;
+  }
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ HOME
+  /* ---------------------------------------------------------- */
+  #videos {
+    padding-top: 15vh;
+    height: auto;
+  }
+
+  #videos ul li .name {
+    padding: 26px 30px;
+    font-size: 39px;
+  }
+
+  #videos ul li .overlay i {
+    font-size: 180px;
+  }
+
+  #videos ul li {
+    width: 100%;
+    margin: 0 !important;
+    margin-bottom: 2% !important;
+  }
+
+  #videos .veil .modal {
+    width: 90%;
+  }
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ TEAM
+  /* ---------------------------------------------------------- */
+  #team {
+    height: auto;
+    padding: 15vh 0;
+  }
+
+  #team .align{
+    display: none;
+  }
+
+  #team #brands {
+    height: auto;
+  }
+
+  #team #brands .col {
+    height: auto;
+    width: 100%;
+  }
+
+  #team #brands .col:first-child:before,
+  #team #brands .cubes:before {
+    padding-top: 100%;
+    display: block;
+    content: "";
+  }
+
+  #team #brands .col .cubes {
+    height: auto;
+  }
+
+  #team #brands .col:last-child {
+    margin-left: 0;
+    margin-top: 1.5%;
+  }
+
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ NEWS
+  /* ---------------------------------------------------------- */
+  #news #grid .column {
+    width: 50%;
+  }
+
+  #news #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
+
+  .veil .modal img {
+    max-height: 100vh;
+    max-width: 95vw;
+  }
+
+}

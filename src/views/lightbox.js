@@ -7,7 +7,7 @@ module.exports = Backbone.View.extend({
 
   initialize: function(params) {
 
-    this.tpl = _.template($('#tpl-video-popup').html());
+    this.tpl = _.template($('#tpl-img-popup').html());
     this.url = params.url;
   },
 
@@ -18,7 +18,7 @@ module.exports = Backbone.View.extend({
       url: this.url
     }));
 
-    $('#videos').append(this.$el);
+    $('#news').append(this.$el);
 
     return this.show();
   },
@@ -26,7 +26,7 @@ module.exports = Backbone.View.extend({
   setUrl: function(url) {
 
     this.url = url;
-    this.$el.find('iframe').attr('src', this.url);
+    this.$el.find('img').attr('src', this.url);
     return this.show();
   },
 
@@ -38,7 +38,6 @@ module.exports = Backbone.View.extend({
   close: function() {
 
     this.$el.find('.veil').removeClass('ready');
-    this.$el.find('iframe').attr('src','');
     this.$el.hide(0);
     $('body').removeClass('modal-open');
   },

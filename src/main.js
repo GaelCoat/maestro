@@ -1,5 +1,8 @@
 var Home = require('./views/home');
 var Video = require('./views/video');
+var Stats = require('./views/stats');
+var Lightbox = require('./views/lightbox');
+var Salvattore = require('salvattore');
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
@@ -8,15 +11,30 @@ _.templateSettings = {
 var Main = Backbone.View.extend({
 
   home: null,
+  stats: null,
 
   currentVideo: null,
+  currentLightbox: null,
 
   events: {
+    'click #header li': 'anchor',
     'click #videos li': 'newVideo',
+    'click #news .wrap': 'newLightbox',
+    'mouseenter #news .wrap': 'wow',
   },
 
   initialize: function(params) {
 
+  },
+
+  anchor: function(e) {
+
+    var section = this.$el.find(e.currentTarget).attr('anchor');
+    this.$el.find('#header li.current').removeClass('current');
+    this.$el.find(e.currentTarget).addClass('current');
+
+    $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
+    return false;
   },
 
   scroll: _.throttle(function() {
@@ -30,16 +48,39 @@ var Main = Backbone.View.extend({
 
   }, 100),
 
+  wow: function(e) {
+
+    var pos = {x: e.offsetX, y: e.offsetY};
+    var damn = $(e.currentTarget).find('.alright');
+    damn.css({top: pos.y, left: pos.x});
+
+    return this;
+  },
+
   newVideo: function(e) {
 
 
-    var id = this.$el.find(e.currentTarget).attr('video-id');
+    var url = this.$el.find(e.currentTarget).attr('video-url');
 
     this.$el.addClass('modal-open');
 
-    if (this.currentVideo) return this.currentVideo.setUrl(id);
-    this.currentVideo = new Video({id: id});
+    if (this.currentVideo) return this.currentVideo.setUrl(url);
+    this.currentVideo = new Video({url: url});
     this.currentVideo.render();
+
+    return this;
+  },
+
+  newLightbox: function(e) {
+
+
+    var url = this.$el.find(e.currentTarget).find('img').attr('src');
+
+    this.$el.addClass('modal-open');
+
+    if (this.currentLightbox) return this.currentLightbox.setUrl(url);
+    this.currentLightbox = new Lightbox({url: url});
+    this.currentLightbox.render();
 
     return this;
   },
@@ -48,6 +89,13 @@ var Main = Backbone.View.extend({
 
     this.home = new Home({el: $('#home')});
     this.home.render();
+    return this;
+  },
+
+  initStats: function() {
+
+    this.stats = new Stats({el: $('#stats')});
+    this.stats.render();
     return this;
   },
 
@@ -61,6 +109,7 @@ var Main = Backbone.View.extend({
     .then(function() {
 
       that.$el.addClass('ready');
+      return that.initStats();
     });
 
   },
