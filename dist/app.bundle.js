@@ -11,9 +11,9 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function(_, Backbone, $, q) {var Home = __webpack_require__(9);
 	var Video = __webpack_require__(10);
-	var Stats = __webpack_require__(13);
-	var Lightbox = __webpack_require__(11);
-	var Salvattore = __webpack_require__(12);
+	var Stats = __webpack_require__(11);
+	var Lightbox = __webpack_require__(12);
+	var Salvattore = __webpack_require__(13);
 
 	_.templateSettings = {
 	  interpolate: /\{\{(.+?)\}\}/g
@@ -229,6 +229,31 @@ webpackJsonp([0],[
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(Backbone) {
+	module.exports = Backbone.View.extend({
+
+
+	  initialize: function(params) {
+
+	  },
+
+	  render: function() {
+
+	    return this;
+	  },
+
+
+
+	})
+
+
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {
 	module.exports = Backbone.View.extend({
 
@@ -286,7 +311,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -893,31 +918,6 @@ webpackJsonp([0],[
 	return salvattore;
 	}));
 
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(Backbone) {
-	module.exports = Backbone.View.extend({
-
-
-	  initialize: function(params) {
-
-	  },
-
-	  render: function() {
-
-	    return this;
-	  },
-
-
-
-	})
-
-
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }
 ]);
