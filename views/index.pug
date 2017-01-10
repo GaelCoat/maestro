@@ -5,8 +5,19 @@ head
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
+  link(href="css/burgers.css", rel="stylesheet", type="text/css")
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body
+  aside#fixed-menu
+    button#burger.hamburger.hamburger--slider.js-hamburger
+      span.hamburger-box
+        span.hamburger-inner
+    ul.links
+      li.current(anchor='home') Accueil
+      li(anchor='videos') Videos
+      li(anchor='stats') Stats
+      li(anchor='team') My Team
+      li(anchor='news') News
   header#header
     ul.links
       li.current(anchor='home') Accueil

@@ -16,6 +16,10 @@
   list-style: none;
 }
 
+*:focus {
+  outline: none;
+}
+
 body{
   background-color: #ededed;
   background-color: #fff;
@@ -97,6 +101,92 @@ section.loaded h2.title{
 .cool-shit li:nth-child(5) { transition-delay: .8s; }
 
 /* ---------------------------------------------------------- */
+/* ------------------------------------------ BURGER
+/* ---------------------------------------------------------- */
+#fixed-menu{
+  position: fixed;
+  left: 40px;
+  top: 40px;
+  z-index: 99;
+  display: none;
+}
+
+#fixed-menu ul{
+  font-size: 0;
+  display: inline-block;
+  vertical-align: top;
+  height: 63px;
+  background-color: #fff;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate(0, -15px);
+  transition: opacity .33s, transform .33s;
+  width: 0;
+}
+
+#fixed-menu.open ul{
+  width: auto;
+  padding-left: 22px;
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+#fixed-menu ul:before{
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+#fixed-menu ul li{
+  display: inline-block;
+  color: #202020;
+  vertical-align: middle;
+  font-size: 19px;
+  font-family: Arial;
+  margin-right: 22px;
+  transition: .2s;
+  cursor: pointer;
+}
+
+#fixed-menu ul li.current{
+  color: #0136ff;
+  border-bottom: 2px solid #0136ff;
+}
+
+#fixed-menu ul li:hover{
+  color: #0136ff;
+}
+
+#burger{
+  position: relative;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  transform: translate(0, -15px);
+  transition: .33s;
+  cursor: pointer;
+  height: 63px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#burger.is-active{
+  background-color: #202020;
+}
+
+#burger.is-active .hamburger-inner,
+#burger.is-active .hamburger-inner::before,
+#burger.is-active .hamburger-inner::after {
+  background-color: #fff;
+}
+
+#fixed-menu.locked #burger{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ---------------------------------------------------------- */
 /* ------------------------------------------ HEADER
 /* ---------------------------------------------------------- */
 #header{
@@ -116,7 +206,7 @@ section.loaded h2.title{
   display: inline-block;
   opacity: 0;
   transform: translate3d(0, 20px, 0);
-  transition: .4s;
+  transition: opacity .4s, transform .4s;
   transition-delay: 1.3s;
 }
 

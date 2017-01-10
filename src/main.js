@@ -3,6 +3,7 @@ var Video = require('./views/video');
 var Stats = require('./views/stats');
 var Lightbox = require('./views/lightbox');
 var Salvattore = require('salvattore');
+var isMobile = require('./libs/isMobile');
 
 _.templateSettings = {
   interpolate: /\{\{(.+?)\}\}/g
@@ -17,7 +18,8 @@ var Main = Backbone.View.extend({
   currentLightbox: null,
 
   events: {
-    'click #header li': 'anchor',
+    'click .links li': 'anchor',
+    'click #burger': 'toggleMenu',
     'click #videos li': 'newVideo',
     'click #news .wrap': 'newLightbox',
     'mouseenter #news .wrap': 'wow',
@@ -25,6 +27,13 @@ var Main = Backbone.View.extend({
 
   initialize: function(params) {
 
+  },
+
+  toggleMenu: function() {
+
+    this.$el.find('#fixed-menu').toggleClass('open');
+    this.$el.find('#burger').toggleClass('is-active');
+    return this;
   },
 
   anchor: function(e) {
@@ -45,6 +54,12 @@ var Main = Backbone.View.extend({
     var current = Math.floor((st+vh*0.6)/vh);
 
     this.$el.find('#'+sections[current]).addClass('loaded');
+
+    if (Math.floor((st+vh)/vh) >= 2) this.$el.find('#fixed-menu').show(0).addClass('locked');
+    else {
+      this.$el.find('#fixed-menu').removeClass('locked open').hide(0);
+      this.$el.find('#burger').removeClass('is-active');
+    }
 
   }, 100),
 
@@ -103,6 +118,7 @@ var Main = Backbone.View.extend({
 
     var that = this;
 
+    console.log(jQuery.browser.mobile);
     $(window).scroll(this.scroll.bind(this));
 
     return q.fcall(this.initHome.bind(this))
