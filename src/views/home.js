@@ -1,3 +1,4 @@
+var isMobile = require('../libs/isMobile');
 
 module.exports = Backbone.View.extend({
 
@@ -7,8 +8,27 @@ module.exports = Backbone.View.extend({
 
   },
 
+  renderImage: function() {
+
+    var tpl = _.template($('#tpl-home-mask').html());
+
+    this.$el.find('ul.cool-shit').after(tpl());
+    return this;
+
+  },
+
+  renderVideo: function() {
+
+    var tpl = _.template($('#tpl-home-video').html());
+
+    this.$el.find('ul.cool-shit').after(tpl());
+    return this;
+  },
+
   render: function() {
 
+    if (isMobile) return this.renderImage();
+    else return this.renderVideo();
     return this;
   },
 

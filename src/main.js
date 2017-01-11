@@ -1,24 +1,30 @@
 var Home = require('./views/home');
+var Menu = require('./views/menu');
 var Video = require('./views/video');
 var Stats = require('./views/stats');
 var Lightbox = require('./views/lightbox');
 var Salvattore = require('salvattore');
-var isMobile = require('./libs/isMobile');
 
 _.templateSettings = {
-  interpolate: /\{\{(.+?)\}\}/g
+  interpolate: /\{\{(.+?)\}\}/g,
+  escape: /\{\{\-(.+?)\}\}/g,
+  evaluate: /\<\%(.+?)\%\>/gim
 };
+
 
 var Main = Backbone.View.extend({
 
   home: null,
+  menu: null,
   stats: null,
 
   currentVideo: null,
   currentLightbox: null,
 
+  currentSection: 0,
+
   events: {
-    'click .links li': 'anchor',
+    'click .navs li': 'anchor',
     'click #burger': 'toggleMenu',
     'click #videos li': 'newVideo',
     'click #news .wrap': 'newLightbox',
@@ -39,8 +45,6 @@ var Main = Backbone.View.extend({
   anchor: function(e) {
 
     var section = this.$el.find(e.currentTarget).attr('anchor');
-    this.$el.find('#header li.current').removeClass('current');
-    this.$el.find(e.currentTarget).addClass('current');
 
     $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
     return false;
@@ -53,7 +57,13 @@ var Main = Backbone.View.extend({
     var vh = $(window).height();
     var current = Math.floor((st+vh*0.6)/vh);
 
-    this.$el.find('#'+sections[current]).addClass('loaded');
+    this.$el.find('#'+sections[Math.floor((st+vh)/vh)]).addClass('loaded');
+
+    if (current != this.currentSection) {
+
+      this.$el.find('#fixed-menu li.current').removeClass('current');
+      this.$el.find("#fixed-menu li[data-scroll="+current+"]").addClass('current');
+    }
 
     if (Math.floor((st+vh)/vh) >= 2) this.$el.find('#fixed-menu').show(0).addClass('locked');
     else {
@@ -61,6 +71,9 @@ var Main = Backbone.View.extend({
       this.$el.find('#burger').removeClass('is-active');
     }
 
+    this.currentSection = current;
+
+    return this;
   }, 100),
 
   wow: function(e) {
@@ -107,6 +120,13 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  initMenu: function() {
+
+    this.menu = new Menu({el: $('body')});
+    this.menu.render();
+    return this;
+  },
+
   initStats: function() {
 
     this.stats = new Stats({el: $('#stats')});
@@ -118,10 +138,17 @@ var Main = Backbone.View.extend({
 
     var that = this;
 
-    console.log(jQuery.browser.mobile);
     $(window).scroll(this.scroll.bind(this));
 
-    return q.fcall(this.initHome.bind(this))
+    return q.fcall(function(){
+
+      return [
+        that.initHome(),
+        that.initMenu()
+      ]
+    })
+    .all()
+    .delay(200)
     .then(function() {
 
       that.$el.addClass('ready');

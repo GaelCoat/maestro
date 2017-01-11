@@ -111,7 +111,13 @@ section.loaded h2.title{
   display: none;
 }
 
-#fixed-menu ul{
+#fixed-menu.mobile{
+  display: block !important;
+  left: 0;
+  top: 0;
+}
+
+#fixed-menu ul.links{
   font-size: 0;
   display: inline-block;
   vertical-align: top;
@@ -124,21 +130,21 @@ section.loaded h2.title{
   width: 0;
 }
 
-#fixed-menu.open ul{
+#fixed-menu.open ul.links{
   width: auto;
   padding-left: 22px;
   opacity: 1;
   transform: translate(0, 0);
 }
 
-#fixed-menu ul:before{
+#fixed-menu ul.links:before{
   content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
 }
 
-#fixed-menu ul li{
+#fixed-menu ul.links li{
   display: inline-block;
   color: #202020;
   vertical-align: middle;
@@ -146,15 +152,16 @@ section.loaded h2.title{
   font-family: Arial;
   margin-right: 22px;
   transition: .2s;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
 }
 
-#fixed-menu ul li.current{
+#fixed-menu ul.links li.current{
   color: #0136ff;
   border-bottom: 2px solid #0136ff;
 }
 
-#fixed-menu ul li:hover{
+#fixed-menu ul.links li:hover{
   color: #0136ff;
 }
 
@@ -171,8 +178,8 @@ section.loaded h2.title{
   vertical-align: top;
 }
 
-#burger.is-active{
-  background-color: #202020;
+#fixed-menu #burger.is-active{
+  background-color: #202020 !important;
 }
 
 #burger.is-active .hamburger-inner,
@@ -185,6 +192,61 @@ section.loaded h2.title{
   opacity: 1;
   transform: translate(0, 0);
 }
+
+#fixed-menu.mobile #burger{
+  background-color: #fff;
+  opacity: 1;
+  transform: translate(50%, 50%) scale(2);
+  z-index: 999;
+}
+
+#fixed-menu.mobile .overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, .92);
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity .6s;
+}
+
+#fixed-menu.mobile.open .overlay{
+  opacity: 1;
+  height: 100%;
+  text-align: center;
+}
+
+#fixed-menu.mobile .overlay:before{
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#fixed-menu.mobile .overlay ul{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#fixed-menu.mobile .overlay ul li{
+  display: block;
+  font-size: 10vw;
+  color: #202020;
+  font-family: Abril;
+  line-height: 12vw;
+  margin-bottom: 4vw;
+}
+
+#fixed-menu.mobile .overlay ul li.current{
+  color: #0136ff;
+  border-bottom: 6px solid #0136ff;
+}
+
+
+
 
 /* ---------------------------------------------------------- */
 /* ------------------------------------------ HEADER
@@ -359,23 +421,16 @@ body.ready #home h1 span {
   height: 95%;
 }
 
-/*#home #mask{
-  position: absolute;
-  top: -40px;
-  height: 100vh;
-  left: 36vw;
-  z-index: 99;
-
-  mask-image: url(/img/mask.png);
-  -webkit-mask-image: url(/img/mask.png);
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
+#home img#mask{
+  height: 100%;
+  display: inline-block;
+  margin-right: 12vw;
 
   transition: .4s;
   opacity: 0;
   transform: translate3d(10%, 0, 0);
   transition-delay: 1.5s;
-}*/
+}
 
 #home .video-wrapper{
   position: absolute;
@@ -384,8 +439,6 @@ body.ready #home h1 span {
   right: 0;
   text-align: right;
   overflow: hidden;
-
-
 }
 
 #home video{
@@ -408,7 +461,7 @@ body.ready #home h1 span {
 }
 
 body.ready #home #mask{
-  opacity: .85;
+  opacity: .9;
   transform: translate3d(0, 0, 0);
 }
 
@@ -613,9 +666,155 @@ body.ready #home #mask{
 }
 
 #stats.loaded #table{
-
   transform: scale(1);
   opacity: 1;
+}
+
+#stats #table ul.seasons{
+  display: block;
+  padding: 22px;
+  position: absolute;
+  z-index: 99;
+  padding: 4% 8%;
+}
+
+#stats #table ul.seasons li{
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 12px;
+  cursor: pointer;
+  opacity: .6;
+}
+
+#stats #table ul.seasons li.current{
+  opacity: 1;
+  font-weight: bold;
+}
+
+#stats #table .path{
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+#stats #table ul.data{
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: .33s;
+}
+
+#stats #table ul.data:before{
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  content: "";
+}
+
+#stats #table ul.data li{
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 15px;
+  padding: 0 8%;
+  width: 100%;
+  white-space: normal;
+}
+
+#stats #table ul.data li .each{
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  padding-bottom: 30px;
+  margin-bottom: 6%;
+  text-align: right;
+  position: relative;
+}
+
+#stats #table ul.data li .each:last-child{
+  margin-bottom: 0px;
+}
+
+#stats #table ul.data li .each:after{
+  display: block;
+  clear: both;
+  float: none;
+  content: "";
+}
+
+#stats #table ul.data li .each h3{
+  float: left;
+  text-align: left;
+}
+
+#stats #table ul.data li .each h3 b{
+  font-size: 60px;
+  display: block;
+}
+
+#stats #table ul.data li .each h3 span{
+  font-size: 22px;
+  font-weight: normal;
+  display: block;
+  opacity: .8;
+}
+
+#stats #table ul.data li .each .details{
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  text-align: left;
+}
+
+#stats #table ul.data li .each .details .spec{
+  display: inline-block;
+  vertical-align: bottom;
+  text-align: left;
+  margin-left: 36px;
+}
+
+#stats #table ul.data li .each .details h4{
+  text-align: right;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#stats #table ul.data li .each .details b{
+  font-size: 40px;
+  display: block;
+}
+
+#stats #table ul.data li .each .details span{
+  font-size: 18px;
+  font-weight: normal;
+  display: block;
+  opacity: .8;
+}
+
+#stats #table ul.data li .each .details .curve{
+  display: inline-block;
+  vertical-align: bottom;
+  width: 60px;
+  height: 85px;
+  position: relative;
+  margin-left: 16px;
+}
+
+#stats #table ul.data li .each .details .curve .percentage{
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /* ---------------------------------------------------------- */
