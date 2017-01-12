@@ -1,4 +1,5 @@
 var isMobile = require('../libs/isMobile');
+var isTrash = require('../libs/isTrash');
 
 module.exports = Backbone.View.extend({
 
@@ -14,7 +15,6 @@ module.exports = Backbone.View.extend({
 
     this.$el.find('ul.cool-shit').after(tpl());
     return this;
-
   },
 
   renderVideo: function() {
@@ -27,7 +27,7 @@ module.exports = Backbone.View.extend({
 
   render: function() {
 
-    if (isMobile) return this.renderImage();
+    if (isMobile || isTrash) return this.renderImage();
     else return this.renderVideo();
     return this;
   },

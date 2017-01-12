@@ -3,6 +3,7 @@ var Menu = require('./views/menu');
 var Video = require('./views/video');
 var Stats = require('./views/stats');
 var Lightbox = require('./views/lightbox');
+var isMobile = require('./libs/isMobile');
 var Salvattore = require('salvattore');
 
 _.templateSettings = {
@@ -22,6 +23,8 @@ var Main = Backbone.View.extend({
   currentLightbox: null,
 
   currentSection: 0,
+
+  offsets: [],
 
   events: {
     'click .navs li': 'anchor',
@@ -45,33 +48,55 @@ var Main = Backbone.View.extend({
   anchor: function(e) {
 
     var section = this.$el.find(e.currentTarget).attr('anchor');
-
     $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
+    if (isMobile) this.toggleMenu();
     return false;
   },
 
-  scroll: _.throttle(function() {
+  initSections: function() {
+
+    var that = this;
 
     var sections = ['home', 'videos', 'stats', 'team', 'news'];
+
+    sections.forEach(function(section, id) {
+
+      var top = that.$el.find('#'+sections[id]).offset().top;
+      that.offsets.push(top);
+    });
+
+    return this;
+  },
+
+  currentPage: 0,
+
+  scroll: _.throttle(function() {
+
+    var that = this;
     var st = $(window).scrollTop();
-    var vh = $(window).height();
-    var current = Math.floor((st+vh*0.6)/vh);
+    var perfect = $(window).height() / 2;
 
-    this.$el.find('#'+sections[Math.floor((st+vh)/vh)]).addClass('loaded');
+    var offset = this.offsets[this.currentPage]
 
-    if (current != this.currentSection) {
+    if (st > offset - perfect) {
+
+      this.$el.find("section[data-offset="+this.currentPage+"]").addClass('loaded');
+      this.$el.find('#fixed-menu li.current').removeClass('current');
+      this.$el.find("#fixed-menu li[data-scroll="+this.currentPage+"]").addClass('current');
+      this.currentPage++;
+
+    } else if (st < this.offsets[this.currentPage - 1] - perfect) {
 
       this.$el.find('#fixed-menu li.current').removeClass('current');
-      this.$el.find("#fixed-menu li[data-scroll="+current+"]").addClass('current');
+      this.$el.find("#fixed-menu li[data-scroll="+(this.currentPage-2)+"]").addClass('current');
+      this.currentPage--;
     }
 
-    if (Math.floor((st+vh)/vh) >= 2) this.$el.find('#fixed-menu').show(0).addClass('locked');
+    if (this.currentPage > 1) this.$el.find('#fixed-menu').show(0).addClass('locked');
     else {
       this.$el.find('#fixed-menu').removeClass('locked open').hide(0);
       this.$el.find('#burger').removeClass('is-active');
     }
-
-    this.currentSection = current;
 
     return this;
   }, 100),
@@ -143,6 +168,7 @@ var Main = Backbone.View.extend({
     return q.fcall(function(){
 
       return [
+        that.initSections(),
         that.initHome(),
         that.initMenu()
       ]

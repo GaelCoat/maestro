@@ -14,6 +14,7 @@ webpackJsonp([0],[
 	var Video = __webpack_require__(12);
 	var Stats = __webpack_require__(13);
 	var Lightbox = __webpack_require__(15);
+	var isMobile = __webpack_require__(10);
 	var Salvattore = __webpack_require__(16);
 
 	_.templateSettings = {
@@ -33,6 +34,8 @@ webpackJsonp([0],[
 	  currentLightbox: null,
 
 	  currentSection: 0,
+
+	  offsets: [],
 
 	  events: {
 	    'click .navs li': 'anchor',
@@ -56,33 +59,55 @@ webpackJsonp([0],[
 	  anchor: function(e) {
 
 	    var section = this.$el.find(e.currentTarget).attr('anchor');
-
 	    $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
+	    if (isMobile) this.toggleMenu();
 	    return false;
 	  },
 
-	  scroll: _.throttle(function() {
+	  initSections: function() {
+
+	    var that = this;
 
 	    var sections = ['home', 'videos', 'stats', 'team', 'news'];
+
+	    sections.forEach(function(section, id) {
+
+	      var top = that.$el.find('#'+sections[id]).offset().top;
+	      that.offsets.push(top);
+	    });
+
+	    return this;
+	  },
+
+	  currentPage: 0,
+
+	  scroll: _.throttle(function() {
+
+	    var that = this;
 	    var st = $(window).scrollTop();
-	    var vh = $(window).height();
-	    var current = Math.floor((st+vh*0.6)/vh);
+	    var perfect = $(window).height() / 2;
 
-	    this.$el.find('#'+sections[Math.floor((st+vh)/vh)]).addClass('loaded');
+	    var offset = this.offsets[this.currentPage]
 
-	    if (current != this.currentSection) {
+	    if (st > offset - perfect) {
+
+	      this.$el.find("section[data-offset="+this.currentPage+"]").addClass('loaded');
+	      this.$el.find('#fixed-menu li.current').removeClass('current');
+	      this.$el.find("#fixed-menu li[data-scroll="+this.currentPage+"]").addClass('current');
+	      this.currentPage++;
+
+	    } else if (st < this.offsets[this.currentPage - 1] - perfect) {
 
 	      this.$el.find('#fixed-menu li.current').removeClass('current');
-	      this.$el.find("#fixed-menu li[data-scroll="+current+"]").addClass('current');
+	      this.$el.find("#fixed-menu li[data-scroll="+(this.currentPage-2)+"]").addClass('current');
+	      this.currentPage--;
 	    }
 
-	    if (Math.floor((st+vh)/vh) >= 2) this.$el.find('#fixed-menu').show(0).addClass('locked');
+	    if (this.currentPage > 1) this.$el.find('#fixed-menu').show(0).addClass('locked');
 	    else {
 	      this.$el.find('#fixed-menu').removeClass('locked open').hide(0);
 	      this.$el.find('#burger').removeClass('is-active');
 	    }
-
-	    this.currentSection = current;
 
 	    return this;
 	  }, 100),
@@ -154,6 +179,7 @@ webpackJsonp([0],[
 	    return q.fcall(function(){
 
 	      return [
+	        that.initSections(),
 	        that.initHome(),
 	        that.initMenu()
 	      ]
@@ -188,6 +214,7 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var isMobile = __webpack_require__(10);
+	var isTrash = __webpack_require__(17);
 
 	module.exports = Backbone.View.extend({
 
@@ -203,7 +230,6 @@ webpackJsonp([0],[
 
 	    this.$el.find('ul.cool-shit').after(tpl());
 	    return this;
-
 	  },
 
 	  renderVideo: function() {
@@ -216,7 +242,7 @@ webpackJsonp([0],[
 
 	  render: function() {
 
-	    if (isMobile) return this.renderImage();
+	    if (isMobile || isTrash) return this.renderImage();
 	    else return this.renderVideo();
 	    return this;
 	  },
@@ -1178,6 +1204,21 @@ webpackJsonp([0],[
 
 	return salvattore;
 	}));
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	
+	module.exports = function() {
+
+	  return /MSIE 10/i.test(navigator.userAgent) ||
+	    /MSIE 9/i.test(navigator.userAgent) ||
+	    /rv:11.0/i.test(navigator.userAgent) ||
+	    /Edge\/12./i.test(navigator.userAgent);
+
+	}()
 
 
 /***/ }

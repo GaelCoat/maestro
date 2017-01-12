@@ -8,7 +8,7 @@ head
   link(href="css/burgers.css", rel="stylesheet", type="text/css")
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body
-  section#home
+  section#home(data-offset='0')
     ul.cool-shit
       li.stripe
       li.stripe
@@ -22,7 +22,7 @@ body
       h1
         span Thauvin
 
-  section#videos
+  section#videos(data-offset='1')
     .align
     .row
       h2.title Videos
@@ -52,7 +52,7 @@ body
             i.fa.fa-play-circle
           .name Thauvin élu meilleur espoir de ligue 1
 
-  section#stats
+  section#stats(data-offset='2')
     .align
     .row
       h2.title Stats
@@ -61,7 +61,7 @@ body
         .path
           ul.data
 
-  section#team
+  section#team(data-offset='3')
     ul.cool-shit
       li.stripe
       li.stripe
@@ -72,14 +72,14 @@ body
     .row
       h2.title My Team
       #brands
+        a(target='_blank', href='http://www.adidas.fr/').col
         .col
-        .col
-          .cubes
-          .cubes
-          .cubes
-          .cubes
+          a(target='_blank', href='http://www.intersport.fr/').cubes
+          a(target='_blank', href='http://www.citroen.fr/accueil.html').cubes
+          a(target='_blank', href='http://fr.louisvuitton.com/fra-fr/homepage?campaign=sem_GG-FR-FRA-EC-BRAN-BROT').cubes
+          a(target='_blank', href='https://www.winamax.fr/').cubes
 
-  section#news
+  section#news(data-offset='4')
     .row
       h2.title News
       #grid(data-columns)

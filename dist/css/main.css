@@ -297,7 +297,7 @@ body.ready #header ul{
   color: #0136ff;
 }
 
-#header #social{
+#social{
   position: absolute;
   right: 0;
   top: 40px;
@@ -308,20 +308,29 @@ body.ready #header ul{
   height: 0;
   transition: .58s;
   transition-delay: 1.5s;
+  z-index: 99;
 }
 
-body.ready #header #social{
+#social.mobile {
+  padding: 0 40px;
+}
+
+body.ready #social{
   height: 72px;
 }
 
-#header #social:before{
+body.ready #social.mobile {
+  height: 100px;
+}
+
+#social:before{
   height: 100%;
   display: inline-block;
   vertical-align: middle;
   content: "";
 }
 
-#header #social a{
+#social a{
   color: #fff;
   display: inline-block;
   vertical-align: middle;
@@ -331,7 +340,12 @@ body.ready #header #social{
   position: relative;
 }
 
-#header #social a:before{
+#social.mobile a {
+  margin-right: 50px;
+  font-size: 50px;
+}
+
+#social a:before{
   background-color: rgba(14, 30, 90, 0.5);
   border-radius: 50px;
   position: absolute;
@@ -348,15 +362,15 @@ body.ready #header #social{
   opacity: 0;
 }
 
-#header #social a:hover:before{
+#social a:hover:before{
   transform: scale(1);
   opacity: 1;
 }
 
-#header #social a:nth-child(2):before{ margin-left: -13px; }
-#header #social a:nth-child(3):before{ margin-left: -12px; }
+#social a:nth-child(2):before{ margin-left: -13px; }
+#social a:nth-child(3):before{ margin-left: -12px; }
 
-#header #social a i{
+#social a i{
   position: relative;
   z-index: 2;
 }
