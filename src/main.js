@@ -55,6 +55,8 @@ var Main = Backbone.View.extend({
 
   initSections: function() {
 
+    this.offsets = [];
+
     var that = this;
 
     var sections = ['home', 'videos', 'stats', 'team', 'news'];
@@ -163,6 +165,7 @@ var Main = Backbone.View.extend({
 
     var that = this;
 
+    $(window).resize(this.initSections.bind(this));
     $(window).scroll(this.scroll.bind(this));
 
     return q.fcall(function(){

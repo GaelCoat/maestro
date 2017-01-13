@@ -1,7 +1,7 @@
 doctype html
 head
-  meta(charset='UTF-8')
-  title Le sel
+  meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+  title FLorian Thauvin
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
@@ -73,58 +73,68 @@ body
       h2.title My Team
       #brands
         a(target='_blank', href='http://www.adidas.fr/').col
+          .overlay
+            .btn Voir le site
         .col
           a(target='_blank', href='http://www.intersport.fr/').cubes
+            .overlay
+              .btn Voir le site
           a(target='_blank', href='http://www.citroen.fr/accueil.html').cubes
+            .overlay
+              .btn Voir le site
           a(target='_blank', href='http://fr.louisvuitton.com/fra-fr/homepage?campaign=sem_GG-FR-FRA-EC-BRAN-BROT').cubes
+            .overlay
+              .btn Voir le site
           a(target='_blank', href='https://www.winamax.fr/').cubes
+            .overlay
+              .btn Voir le site
 
   section#news(data-offset='4')
     .row
       h2.title News
       #grid(data-columns)
         .wrap
-          img(src='/img/temp/1.jpg')
+          img(src='./img/temp/1.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/2.jpg')
+          img(src='./img/temp/2.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/3.jpg')
+          img(src='./img/temp/3.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/4.jpg')
+          img(src='./img/temp/4.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/7.jpg')
+          img(src='./img/temp/7.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/5.jpg')
+          img(src='./img/temp/5.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/6.jpg')
+          img(src='./img/temp/6.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/8.jpg')
+          img(src='./img/temp/8.jpg')
           .ripple
             .overlay
             .alright
         .wrap
-          img(src='/img/temp/10.jpg')
+          img(src='./img/temp/10.jpg')
           .ripple
             .overlay
             .alright
@@ -137,6 +147,6 @@ body
 include ./templates
 
 //- Webpack Bundles
-script(src='/vendor.bundle.js')
-script(src='/app.bundle.js')
+script(src='./vendor.bundle.js')
+script(src='./app.bundle.js')
 
