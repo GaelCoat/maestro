@@ -94,6 +94,7 @@ var Main = Backbone.View.extend({
       this.currentPage--;
     }
 
+    if (isMobile) return this;
     if (this.currentPage > 1) this.$el.find('#fixed-menu').show(0).addClass('locked');
     else {
       this.$el.find('#fixed-menu').removeClass('locked open').hide(0);
@@ -177,9 +178,16 @@ var Main = Backbone.View.extend({
       ]
     })
     .all()
+    .delay(1000)
+    .then(function() {
+
+      that.$el.removeClass('loading');
+      return that;
+    })
     .delay(200)
     .then(function() {
 
+      that.$el.find('#loader').remove();
       that.$el.addClass('ready');
       return that.initStats();
     });

@@ -1,13 +1,13 @@
 doctype html
 head
   meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-  title FLorian Thauvin
+  title Florian Thauvin
   link(href="css/font-awesome.css", rel="stylesheet", type="text/css")
   link(href="css/normalize.css", rel="stylesheet", type="text/css")
   link(href="css/main.css", rel="stylesheet", type="text/css")
   link(href="css/burgers.css", rel="stylesheet", type="text/css")
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
-body
+body.loading
   section#home(data-offset='0')
     ul.cool-shit
       li.stripe
@@ -141,7 +141,20 @@ body
 
   footer
     .row
-      span Patrick l'étoile - Copiright 2017
+      span.left
+        | Réalisé par
+        a(href='http://www.brainconnection.fr/') Brain Connection
+        | - 2017
+      span.right
+        | Videos Copyright
+        a(href='https://www.youtube.com/channel/UCQsH5XtIc9hONE1BQjucM0g') 'Ligue 1'
+
+  #loader
+    .sk-folding-cube
+      .sk-cube1.sk-cube
+      .sk-cube2.sk-cube
+      .sk-cube4.sk-cube
+      .sk-cube3.sk-cube
 
 
 include ./templates
