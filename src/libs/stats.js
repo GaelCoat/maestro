@@ -2,7 +2,29 @@ module.exports = {
 
   seasons: {
 
-    2012: {
+    'national': {
+
+      games: {
+
+        total: 26,
+        u20: 15,
+        espoir: 11,
+      },
+
+      actions: {
+
+        total: 21,
+        goals: 15,
+        passes: 6
+      },
+
+      club: {
+
+        name: 'france'
+      }
+    },
+
+    '2012': {
 
       games: {
 
@@ -16,10 +38,15 @@ module.exports = {
         total: 11,
         goals: 10,
         passes: 1
+      },
+
+      club: {
+
+        name: 'bastia'
       }
     },
 
-    2013: {
+    '2013': {
 
       games: {
 
@@ -34,10 +61,15 @@ module.exports = {
         total: 14,
         goals: 10,
         passes: 4
+      },
+
+      club: {
+
+        name: 'bastia'
       }
     },
 
-    2014: {
+    '2014': {
 
       games: {
 
@@ -51,10 +83,15 @@ module.exports = {
         total: 9,
         goals: 5,
         passes: 4
+      },
+
+      club: {
+
+        name: 'marseille'
       }
     },
 
-    2015: {
+    '2015': {
 
       games: {
 
@@ -69,10 +106,15 @@ module.exports = {
         total: 8,
         goals: 5,
         passes: 3
+      },
+
+      club: {
+
+        name: 'marseille'
       }
     },
 
-    2016: {
+    '2016': {
 
       games: {
 
@@ -86,6 +128,11 @@ module.exports = {
         total: 9,
         goals: 5,
         passes: 4
+      },
+
+      club: {
+
+        name: 'nc-om'
       }
     },
 

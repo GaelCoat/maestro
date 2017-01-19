@@ -24,13 +24,21 @@ module.exports = Backbone.View.extend({
 
     var that = this;
 
+    console.log(stats.seasons);
+
     _.forEach(stats.seasons, function(data, year) {
 
       var season = $('<li>');
       season.attr('id', year);
-      season.text(year);
       season.click(that.slide.bind(that));
 
+      if (year === 'national') {
+        season.text('Sél. Nationale');
+        that.$el.find('ul.seasons').append(season);
+        return that.renderSeason(data, year);
+      }
+
+      season.text(year);
       that.$el.find('ul.seasons').prepend(season);
       that.renderSeason(data, year);
     });
@@ -48,6 +56,11 @@ module.exports = Backbone.View.extend({
       data: data,
       year: year
     });
+
+    if (year === 'national') {
+      this.$el.find('ul.data').append(el);
+      return this;
+    }
 
     this.$el.find('ul.data').prepend(el);
 

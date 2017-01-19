@@ -14,60 +14,78 @@ script(type="text/template", id="tpl-img-popup")
 
 script(type="text/template", id="tpl-stats-data")
   li(data-season='{{year}}')
-    .each
-      h3
-        b {{data.games.total}}
-        span match joués
-      .details
-        <% if (data.games.l1) { %>
-        .spec
-          h4
-            b {{data.games.l1}}
-            span En L1
-          .curve
-            .percentage(style='height:{{Math.round(data.games.l1*100/data.games.total)}}%; opacity:{{data.games.l1/data.games.total}}')
-        <% } %>
-        <% if (data.games.c1) { %>
-        .spec
-          h4
-            b {{data.games.c1}}
-            span En C1
-          .curve
-            .percentage(style='height:{{Math.round(data.games.c1*100/data.games.total)}}%; opacity:{{data.games.c1/data.games.total}}')
-        <% } %>
-        <% if (data.games.pl) { %>
-        .spec
-          h4
-            b {{data.games.pl}}
-            span En PL
-          .curve
-            .percentage(style='height:{{Math.round(data.games.pl*100/data.games.total)}}%; opacity:{{data.games.pl/data.games.total}}')
-        <% } %>
-        <% if (data.games.coupe) { %>
-        .spec
-          h4
-            b {{data.games.coupe}}
-            span En Coupe
-          .curve
-            .percentage(style='height:{{Math.round(data.games.coupe*100/data.games.total)}}%; opacity:{{data.games.coupe/data.games.total}}')
-        <% } %>
-    .each
-      h3
-        b {{data.actions.total}}
-        span actions décisives
-      .details
-        .spec
-          h4
-            b {{data.actions.goals}}
-            span Buts marqués
-          .curve
-            .percentage(style='height:{{Math.round(data.actions.goals*100/data.actions.total)}}%; opacity:{{data.actions.goals/data.actions.total}}')
-        .spec
-          h4
-            b {{data.actions.passes}}
-            span Passes décisives
-          .curve
-            .percentage(style='height:{{Math.round(data.actions.passes*100/data.actions.total)}}%; opacity:{{data.actions.passes/data.actions.total}}')
+    img.club(src='./img/clubs/{{data.club.name}}.png')
+    .centered
+      .each
+        h3
+          b {{data.games.total}}
+          span match joués
+        .details
+          <% if (data.games.l1) { %>
+          .spec
+            h4
+              b {{data.games.l1}}
+              span En L1
+            .curve
+              .percentage(style='height:{{Math.round(data.games.l1*100/data.games.total)}}%; opacity:{{data.games.l1/data.games.total}}')
+          <% } %>
+          <% if (data.games.c1) { %>
+          .spec
+            h4
+              b {{data.games.c1}}
+              span En C1
+            .curve
+              .percentage(style='height:{{Math.round(data.games.c1*100/data.games.total)}}%; opacity:{{data.games.c1/data.games.total}}')
+          <% } %>
+          <% if (data.games.pl) { %>
+          .spec
+            h4
+              b {{data.games.pl}}
+              span En PL
+            .curve
+              .percentage(style='height:{{Math.round(data.games.pl*100/data.games.total)}}%; opacity:{{data.games.pl/data.games.total}}')
+          <% } %>
+          <% if (data.games.coupe) { %>
+          .spec
+            h4
+              b {{data.games.coupe}}
+              span En Coupe
+            .curve
+              .percentage(style='height:{{Math.round(data.games.coupe*100/data.games.total)}}%; opacity:{{data.games.coupe/data.games.total}}')
+          <% } %>
+          <% if (data.games.u20) { %>
+          .spec
+            h4
+              b {{data.games.u20}}
+              span En U-20
+            .curve
+              .percentage(style='height:{{Math.round(data.games.u20*100/data.games.total)}}%; opacity:{{data.games.u20/data.games.total}}')
+          <% } %>
+          <% if (data.games.espoir) { %>
+          .spec
+            h4
+              b {{data.games.espoir}}
+              span En Espoir
+            .curve
+              .percentage(style='height:{{Math.round(data.games.espoir*100/data.games.total)}}%; opacity:{{data.games.espoir/data.games.total}}')
+          <% } %>
+      .each
+        h3
+          b {{data.actions.total}}
+          span actions décisives
+        .details
+          .spec
+            h4
+              b {{data.actions.goals}}
+              span Buts marqués
+            .curve
+              .percentage(style='height:{{Math.round(data.actions.goals*100/data.actions.total)}}%; opacity:{{data.actions.goals/data.actions.total}}')
+          .spec
+            h4
+              b {{data.actions.passes}}
+              span Passes décisives
+            .curve
+              .percentage(style='height:{{Math.round(data.actions.passes*100/data.actions.total)}}%; opacity:{{data.actions.passes/data.actions.total}}')
 
 script(type="text/template", id="tpl-home-video")
   .video-wrapper

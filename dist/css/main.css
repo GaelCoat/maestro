@@ -899,7 +899,7 @@ body.ready #home #mask{
   transition: .33s;
 }
 
-#stats #table ul.data:before{
+#stats #table ul.data li:before{
   display: inline-block;
   vertical-align: middle;
   height: 100%;
@@ -914,6 +914,22 @@ body.ready #home #mask{
   padding: 0 8%;
   width: 100%;
   white-space: normal;
+  height: 100%;
+  position: relative;
+}
+
+#stats #table ul.data li img.club{
+  position: absolute;
+  right: 8%;
+  top: -20px;
+  height: 75px;
+}
+
+
+#stats #table ul.data li .centered{
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
 }
 
 #stats #table ul.data li .each{

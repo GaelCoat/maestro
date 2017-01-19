@@ -1,4 +1,4 @@
-@media screen and (max-width: 1320px) {
+@media screen and (max-width: 1320px)  and (min-height: 830px) {
 
   #home video {
     mask-position: 123% 0%;

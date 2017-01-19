@@ -281,7 +281,8 @@ webpackJsonp([0],[
 	  return /MSIE 10/i.test(navigator.userAgent) ||
 	    /MSIE 9/i.test(navigator.userAgent) ||
 	    /rv:11.0/i.test(navigator.userAgent) ||
-	    /Edge\/12./i.test(navigator.userAgent);
+	    /Edge\/12./i.test(navigator.userAgent) ||
+	    window.navigator.userAgent.indexOf("Edge") > -1;
 
 	}()
 
@@ -420,13 +421,21 @@ webpackJsonp([0],[
 
 	    var that = this;
 
+	    console.log(stats.seasons);
+
 	    _.forEach(stats.seasons, function(data, year) {
 
 	      var season = $('<li>');
 	      season.attr('id', year);
-	      season.text(year);
 	      season.click(that.slide.bind(that));
 
+	      if (year === 'national') {
+	        season.text('Sél. Nationale');
+	        that.$el.find('ul.seasons').append(season);
+	        return that.renderSeason(data, year);
+	      }
+
+	      season.text(year);
 	      that.$el.find('ul.seasons').prepend(season);
 	      that.renderSeason(data, year);
 	    });
@@ -444,6 +453,11 @@ webpackJsonp([0],[
 	      data: data,
 	      year: year
 	    });
+
+	    if (year === 'national') {
+	      this.$el.find('ul.data').append(el);
+	      return this;
+	    }
 
 	    this.$el.find('ul.data').prepend(el);
 
@@ -471,7 +485,29 @@ webpackJsonp([0],[
 
 	  seasons: {
 
-	    2012: {
+	    'national': {
+
+	      games: {
+
+	        total: 26,
+	        u20: 15,
+	        espoir: 11,
+	      },
+
+	      actions: {
+
+	        total: 21,
+	        goals: 15,
+	        passes: 6
+	      },
+
+	      club: {
+
+	        name: 'france'
+	      }
+	    },
+
+	    '2012': {
 
 	      games: {
 
@@ -485,10 +521,15 @@ webpackJsonp([0],[
 	        total: 11,
 	        goals: 10,
 	        passes: 1
+	      },
+
+	      club: {
+
+	        name: 'bastia'
 	      }
 	    },
 
-	    2013: {
+	    '2013': {
 
 	      games: {
 
@@ -503,10 +544,15 @@ webpackJsonp([0],[
 	        total: 14,
 	        goals: 10,
 	        passes: 4
+	      },
+
+	      club: {
+
+	        name: 'bastia'
 	      }
 	    },
 
-	    2014: {
+	    '2014': {
 
 	      games: {
 
@@ -520,10 +566,15 @@ webpackJsonp([0],[
 	        total: 9,
 	        goals: 5,
 	        passes: 4
+	      },
+
+	      club: {
+
+	        name: 'marseille'
 	      }
 	    },
 
-	    2015: {
+	    '2015': {
 
 	      games: {
 
@@ -538,10 +589,15 @@ webpackJsonp([0],[
 	        total: 8,
 	        goals: 5,
 	        passes: 3
+	      },
+
+	      club: {
+
+	        name: 'marseille'
 	      }
 	    },
 
-	    2016: {
+	    '2016': {
 
 	      games: {
 
@@ -555,6 +611,11 @@ webpackJsonp([0],[
 	        total: 9,
 	        goals: 5,
 	        passes: 4
+	      },
+
+	      club: {
+
+	        name: 'nc-om'
 	      }
 	    },
 
