@@ -49,7 +49,7 @@ var Main = Backbone.View.extend({
 
     var section = this.$el.find(e.currentTarget).attr('anchor');
     $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
-    if (isMobile) this.toggleMenu();
+    this.toggleMenu();
     return false;
   },
 

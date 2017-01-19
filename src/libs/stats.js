@@ -65,7 +65,7 @@ module.exports = {
 
       club: {
 
-        name: 'bastia'
+        name: 'marseille'
       }
     },
 
@@ -110,7 +110,7 @@ module.exports = {
 
       club: {
 
-        name: 'marseille'
+        name: 'nc-om'
       }
     },
 
@@ -132,7 +132,7 @@ module.exports = {
 
       club: {
 
-        name: 'nc-om'
+        name: 'marseille'
       }
     },
 

@@ -1,3 +1,4 @@
+var isMobile = require('../libs/isMobile');
 var stats = require('../libs/stats');
 
 module.exports = Backbone.View.extend({
@@ -24,8 +25,6 @@ module.exports = Backbone.View.extend({
 
     var that = this;
 
-    console.log(stats.seasons);
-
     _.forEach(stats.seasons, function(data, year) {
 
       var season = $('<li>');
@@ -33,7 +32,9 @@ module.exports = Backbone.View.extend({
       season.click(that.slide.bind(that));
 
       if (year === 'national') {
-        season.text('Sél. Nationale');
+
+        if (isMobile) season.text('EdF');
+        else season.text('Sél. Nationale');
         that.$el.find('ul.seasons').append(season);
         return that.renderSeason(data, year);
       }

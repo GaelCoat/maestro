@@ -60,7 +60,7 @@ webpackJsonp([0],[
 
 	    var section = this.$el.find(e.currentTarget).attr('anchor');
 	    $('html, body').animate( { scrollTop: $('#'+section).offset().top }, 750 );
-	    if (isMobile) this.toggleMenu();
+	    this.toggleMenu();
 	    return false;
 	  },
 
@@ -395,7 +395,8 @@ webpackJsonp([0],[
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var stats = __webpack_require__(15);
+	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var isMobile = __webpack_require__(10);
+	var stats = __webpack_require__(15);
 
 	module.exports = Backbone.View.extend({
 
@@ -421,8 +422,6 @@ webpackJsonp([0],[
 
 	    var that = this;
 
-	    console.log(stats.seasons);
-
 	    _.forEach(stats.seasons, function(data, year) {
 
 	      var season = $('<li>');
@@ -430,7 +429,9 @@ webpackJsonp([0],[
 	      season.click(that.slide.bind(that));
 
 	      if (year === 'national') {
-	        season.text('Sél. Nationale');
+
+	        if (isMobile) season.text('EdF');
+	        else season.text('Sél. Nationale');
 	        that.$el.find('ul.seasons').append(season);
 	        return that.renderSeason(data, year);
 	      }
@@ -548,7 +549,7 @@ webpackJsonp([0],[
 
 	      club: {
 
-	        name: 'bastia'
+	        name: 'marseille'
 	      }
 	    },
 
@@ -593,7 +594,7 @@ webpackJsonp([0],[
 
 	      club: {
 
-	        name: 'marseille'
+	        name: 'nc-om'
 	      }
 	    },
 
@@ -615,7 +616,7 @@ webpackJsonp([0],[
 
 	      club: {
 
-	        name: 'nc-om'
+	        name: 'marseille'
 	      }
 	    },
 

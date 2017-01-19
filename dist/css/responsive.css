@@ -163,6 +163,15 @@
     margin-right: 3vw;
   }
 
+  #stats #table ul.seasons li:last-child {
+    padding-left: 3vw;
+  }
+
+  #stats #table ul.data li img.club {
+    top: 200px;
+    height: 145px;
+  }
+
   #stats #table ul.seasons {
     padding: 8% 8%;
   }
