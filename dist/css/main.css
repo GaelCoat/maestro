@@ -560,46 +560,14 @@ body.ready #social {
   top: 0;
   margin: auto;
   opacity: 0;
-
-  -webkit-animation: lighting 4s forwards 4.5s;
-          animation: lighting 4s forwards 4.5s;
+  transition: .25s;
 }
 
-@-webkit-keyframes lighting {
-  0% {  opacity: 0; }
-  10% {  opacity: 0; }
-  11% {  opacity: .7; }
-  20% {  opacity: .7; }
-  25% {  opacity: 0; }
-  45% {  opacity: 0; }
-  46% {  opacity: .7; }
-  50% {  opacity: .7; }
-  51% {  opacity: 0; }
-  55% {  opacity: 0; }
-  56% {  opacity: .7; }
-  64% {  opacity: .7; }
-  65% {  opacity: 0; }
-  75% {  opacity: 0; }
-  100% {  opacity: .9; }
+body.ready #home img#lights{
+  opacity: .9;
+  transition-delay: 4s;
 }
 
-@keyframes lighting {
-  0% {  opacity: 0; }
-  10% {  opacity: 0; }
-  11% {  opacity: .7; }
-  20% {  opacity: .7; }
-  25% {  opacity: 0; }
-  45% {  opacity: 0; }
-  46% {  opacity: .7; }
-  50% {  opacity: .7; }
-  51% {  opacity: 0; }
-  55% {  opacity: 0; }
-  56% {  opacity: .7; }
-  64% {  opacity: .7; }
-  65% {  opacity: 0; }
-  75% {  opacity: 0; }
-  100% {  opacity: .9; }
-}
 
 #home .cool-shit li{
   border-right: 1px solid #fff;
@@ -667,8 +635,6 @@ body.ready #dots .dot-wrapper{
   height: 32vw;
   left: -17vw;
   bottom: -16vw;
-  -webkit-transition-delay: 3.5s;
-          transition-delay: 3.5s;
 }
 
 #dots .dot-wrapper.medium{
@@ -676,8 +642,6 @@ body.ready #dots .dot-wrapper{
   height: 6vw;
   left: 55vw;
   top: 13vh;
-  -webkit-transition-delay: 3.3s;
-          transition-delay: 3.3s;
 }
 
 #dots .dot-wrapper.small{
@@ -685,8 +649,21 @@ body.ready #dots .dot-wrapper{
   height: 1.2vw;
   left: 62vw;
   top: 14vh;
+}
+
+body.ready #dots .dot-wrapper.small{
   -webkit-transition-delay: 3.4s;
           transition-delay: 3.4s;
+}
+
+body.ready #dots .dot-wrapper.medium{
+  -webkit-transition-delay: 3.3s;
+          transition-delay: 3.3s;
+}
+
+body.ready #dots .dot-wrapper.big{
+  -webkit-transition-delay: 3.5s;
+          transition-delay: 3.45s;
 }
 
 #scene{
@@ -744,8 +721,6 @@ body.ready #dots .dot-wrapper{
   content: "";
   z-index: 2;
   width: 200%;
-  -webkit-transition-delay: 10s;
-          transition-delay: 10s;
   -webkit-transition: 2.6s;
   transition: 2.6s;
   -webkit-transform: translate(-101%, 0);
@@ -755,13 +730,13 @@ body.ready #dots .dot-wrapper{
 body.ready #scene #mask .fonts .names:after{
   -webkit-transform: translate(101%, 0);
           transform: translate(101%, 0);
-  -webkit-transition-delay: 2.4s;
-          transition-delay: 2.4s;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
 }
 
 body.ready #scene #mask .fonts .names.last:after{
-  -webkit-transition-delay: 2.5s;
-          transition-delay: 2.5s;
+  -webkit-transition-delay: 2.15s;
+          transition-delay: 2.15s;
 }
 
 
@@ -778,13 +753,13 @@ body.ready #scene #mask .fonts .names.last:after{
 
 body.ready #scene #mask .fonts .names h1 {
   opacity: 1;
-  -webkit-transition-delay: 3s;
-          transition-delay: 3s;
+  -webkit-transition-delay: 2.5s;
+          transition-delay: 2.5s;
 }
 
 body.ready #scene #mask .fonts .names.last h1 {
-  -webkit-transition-delay: 3.1s;
-          transition-delay: 3.1s;
+  -webkit-transition-delay: 2.65s;
+          transition-delay: 2.65s;
 }
 
 #scene #mask .fonts .clear{
@@ -800,8 +775,11 @@ body.ready #scene #mask .fonts .names.last h1 {
           mask-size: 7500% 50%;
   -webkit-mask-position: 100% 0;
           mask-position: 100% 0;
-  -webkit-animation: mask-play 1.4s steps(74) forwards 2s;
-          animation: mask-play 1.4s steps(74) forwards 2s;
+}
+
+body.ready #scene #mask {
+  -webkit-animation: mask-play 1.4s steps(74) forwards 1s;
+          animation: mask-play 1.4s steps(74) forwards 1s;
 }
 
 
