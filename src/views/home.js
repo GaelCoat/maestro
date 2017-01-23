@@ -1,5 +1,6 @@
 var isMobile = require('../libs/isMobile');
 var isTrash = require('../libs/isTrash');
+var Repulse = require('../libs/repulse');
 
 module.exports = Backbone.View.extend({
 
@@ -9,26 +10,18 @@ module.exports = Backbone.View.extend({
 
   },
 
-  renderImage: function() {
-
-    var tpl = _.template($('#tpl-home-mask').html());
-
-    this.$el.find('ul.cool-shit').after(tpl());
-    return this;
-  },
-
-  renderVideo: function() {
-
-    var tpl = _.template($('#tpl-home-video').html());
-
-    this.$el.find('ul.cool-shit').after(tpl());
-    return this;
-  },
-
   render: function() {
 
-    if (isMobile || isTrash) return this.renderImage();
-    else return this.renderVideo();
+    if (isMobile) {
+      this.$el.find('#dots').remove();
+      return this;
+    }
+
+    this.$el.find(".repulsed.slow").repulse({ offset: 0.8 });
+    this.$el.find(".repulsed.medium").repulse({ offset: 2 });
+    this.$el.find(".repulsed.fast").repulse({ offset: 4 });
+
+
     return this;
   },
 

@@ -11,18 +11,29 @@ head
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body.loading
   section#home(data-offset='0')
+    img#lights(src="./img/lights.png")
     ul.cool-shit
       li.stripe
       li.stripe
       li.stripe
       li.stripe
       li.stripe
-    .align
-    .row
-      h1
-        span Florian
-      h1
-        span Thauvin
+    #dots
+      .dot-wrapper.big
+        .dot.repulsed.slow
+      .dot-wrapper.medium
+        .dot.repulsed.medium
+      .dot-wrapper.small
+        .dot.repulsed.fast
+    #scene
+      #mask
+        img.repulsed.medium(src="./img/body2.png")
+        .fonts
+          .names.repulsed.slow
+            h1 Florian
+          .clear
+          .names.last.repulsed.fast
+            h1 Thauvin
 
   section#videos(data-offset='1')
     .align

@@ -1,3 +1,10 @@
+@media screen and (max-width: 1440px){
+
+  #social {
+    padding: 16px;
+  }
+}
+
 @media screen and (max-width: 1320px)  and (min-height: 830px) {
 
   #home video {
@@ -14,6 +21,11 @@
 
   #home {
     border: 20px solid #fff;
+    border-bottom: 0;
+  }
+
+  #scene {
+    top: -20px;
   }
 
   #header {
@@ -60,34 +72,34 @@
   /* ---------------------------------------------------------- */
   #home {
     border: 0;
+    overflow: hidden;
   }
 
-  #home h1 {
-    font-size: 16vw;
-    line-height: 16vw;
-    height: 16vw;
-  }
-
-  #home h1 span {
-    line-height: 16vw;
-  }
-
-  #home video {
-    mask-position: 159% 0%;
-    -webkit-mask-position: 159% 0%;
-    margin-right: -10%;
-  }
-
-  #home img#mask {
-    margin-right: -75vw;
-  }
-
-  #home .video-wrapper {
+  #scene {
     top: 0px;
   }
 
+  #scene #mask img {
+    left: -20%;
+  }
+
+  #scene #mask .fonts {
+    left: 2%;
+    right: 0%;
+  }
+
+  #scene #mask .fonts .names h1 {
+    font-size: 20vw;
+    line-height: 19vw;
+  }
+
+  #home img#lights {
+    left: -25%;
+    width: 150%;
+  }
+
   /* ---------------------------------------------------------- */
-  /* ------------------------------------------ HOME
+  /* ------------------------------------------ VIDEOS
   /* ---------------------------------------------------------- */
   #videos {
     padding-top: 15vh;

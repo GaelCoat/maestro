@@ -87,13 +87,6 @@ script(type="text/template", id="tpl-stats-data")
             .curve
               .percentage(style='height:{{Math.round(data.actions.passes*100/data.actions.total)}}%; opacity:{{data.actions.passes/data.actions.total}}')
 
-script(type="text/template", id="tpl-home-video")
-  .video-wrapper
-    video#mask(autoplay, loop, src="./img/helo.mp4")
-
-script(type="text/template", id="tpl-home-mask")
-  .video-wrapper
-    img#mask(src="./img/mask.png")
 
 script(type="text/template", id="tpl-menu-web")
   aside#fixed-menu
@@ -113,13 +106,16 @@ script(type="text/template", id="tpl-menu-web")
       li(anchor='stats') Stats
       li(anchor='team') My Team
       li(anchor='news') News
-    aside#social
-      a(href="https://www.facebook.com/FlorianThauvin/?fref=ts", target="_blank")
-        i.fa.fa-facebook
-      a(href="https://twitter.com/FlorianThauvin", target="_blank")
-        i.fa.fa-twitter
-      a(href="https://www.instagram.com/flotov/", target="_blank")
-        i.fa.fa-instagram
+  aside#social
+    a(href="https://www.facebook.com/FlorianThauvin/?fref=ts", target="_blank")
+      i.fa.fa-facebook
+      span FlorianThauvin
+    a(href="https://twitter.com/FlorianThauvin", target="_blank")
+      i.fa.fa-twitter
+      span @FlorianThauvin
+    a(href="https://www.instagram.com/flotov/", target="_blank")
+      i.fa.fa-instagram
+      span Flotov
 
 script(type="text/template", id="tpl-menu-mobile")
   aside#social.mobile

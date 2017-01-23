@@ -178,7 +178,7 @@ var Main = Backbone.View.extend({
       ]
     })
     .all()
-    .delay(1000)
+    //.delay(1000)
     .then(function() {
 
       that.$el.removeClass('loading');
