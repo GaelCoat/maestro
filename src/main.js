@@ -59,7 +59,7 @@ var Main = Backbone.View.extend({
 
     var that = this;
 
-    var sections = ['home', 'videos', 'stats', 'team', 'news'];
+    var sections = ['home', 'bio', 'stats', 'team', 'news'];
 
     sections.forEach(function(section, id) {
 
@@ -170,6 +170,8 @@ var Main = Backbone.View.extend({
     $(window).scroll(this.scroll.bind(this));
 
     return q.fcall(function(){
+
+      console.log('elo ?');
 
       return [
         that.initSections(),

@@ -70,7 +70,7 @@ webpackJsonp([0],[
 
 	    var that = this;
 
-	    var sections = ['home', 'videos', 'stats', 'team', 'news'];
+	    var sections = ['home', 'bio', 'stats', 'team', 'news'];
 
 	    sections.forEach(function(section, id) {
 
@@ -182,6 +182,8 @@ webpackJsonp([0],[
 
 	    return q.fcall(function(){
 
+	      console.log('elo ?');
+
 	      return [
 	        that.initSections(),
 	        that.initHome(),
@@ -275,7 +277,8 @@ webpackJsonp([0],[
 	    /MSIE 9/i.test(navigator.userAgent) ||
 	    /rv:11.0/i.test(navigator.userAgent) ||
 	    /Edge\/12./i.test(navigator.userAgent) ||
-	    window.navigator.userAgent.indexOf("Edge") > -1;
+	    window.navigator.userAgent.indexOf("Edge") > -1 ||
+	    navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 	}()
 

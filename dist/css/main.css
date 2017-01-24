@@ -691,6 +691,13 @@ body.ready #dots .dot-wrapper.big{
   position: relative;
   z-index: 50;
   top: -3%;
+  opacity: 0;
+  transition: opacity .2s;
+  transition-delay: 1s;
+}
+
+body.ready #scene #mask img{
+  opacity: 1;
 }
 
 #scene #mask .fonts{
@@ -769,8 +776,8 @@ body.ready #scene #mask .fonts .names.last h1 {
 }
 
 #scene #mask {
-  -webkit-mask: url(../img/sprite-1.png);
-          mask: url(../img/sprite-1.png);
+  -webkit-mask-image: url(../img/sprite-1.png);
+          mask-image: url(../img/sprite-1.png);
   -webkit-mask-size: 7500% 50%;
           mask-size: 7500% 50%;
   -webkit-mask-position: 100% 0;
@@ -826,6 +833,46 @@ body.ready #scene #mask {
     -webkit-mask-position: 0% 0;
             mask-position: 0% 0;
   }
+}
+
+/* ---------------------------------------------------------- */
+/* ------------------------------------------ BIO
+/* ---------------------------------------------------------- */
+#bio {
+  background-color: #0136ff;
+  text-align: center;
+  position: relative;
+}
+
+#bio img.portrait{
+  position: absolute;
+  left: 10%;
+  height: 90%;
+  bottom: 0;
+}
+
+#bio .transition{
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  width: 40px;
+}
+
+#bio .transition.left{
+  left: 0;
+  height: 40px;
+}
+
+#bio .transition.right{
+  right: 0;
+  height: 48px;
+}
+
+#bio .transition img{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0;
 }
 
 /* ---------------------------------------------------------- */
