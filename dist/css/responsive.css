@@ -83,6 +83,10 @@
 
 @media only screen and (orientation: portrait) {
 
+  .align {
+    height: 100%;
+  }
+
   .row {
     width: 90%;
   }

@@ -11,7 +11,7 @@ head
   link(href="css/burgers.css", rel="stylesheet", type="text/css")
   link(href="css/responsive.css", rel="stylesheet", type="text/css")
 body.loading
-  section#home(data-offset='0')
+  section#home.setSize(data-offset='0')
     img#lights(src="./img/lights.png")
     ul.cool-shit
       li.stripe
@@ -28,7 +28,7 @@ body.loading
         .dot.repulsed.fast
     #scene
       #mask
-        img.repulsed.medium(src="./img/body2.png")
+        img.repulsed.medium.setSize(src="./img/body2.png")
         .fonts
           .names.repulsed.slow
             h1 Florian
@@ -36,7 +36,7 @@ body.loading
           .names.last.repulsed.fast
             h1 Thauvin
 
-  section#bio(data-offset='1')
+  section#bio.setSize(data-offset='1')
     .transition.left
       img(src='./img/righty.svg')
     .transition.right
@@ -94,11 +94,11 @@ body.loading
             i.fa.fa-play-circle
           .name Thauvin élu meilleur espoir de ligue 1
 
-  section#stats(data-offset='2')
+  section#stats.setSize(data-offset='2')
     .align
     .row
       h2.title Stats
-      #table
+      #table.setSize
         ul.seasons
         .path
           ul.data

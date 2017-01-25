@@ -47,6 +47,8 @@ webpackJsonp([0],[
 
 	  initialize: function(params) {
 
+	    if (isMobile) this.$el.addClass('isMobile');
+
 	  },
 
 	  toggleMenu: function() {
@@ -173,6 +175,23 @@ webpackJsonp([0],[
 	    return this;
 	  },
 
+	  setSizes: function() {
+
+
+	    var that = this;
+
+	    this.$el.find('.setSize').each(function() {
+
+	      var increase = $(this).height() + 120;
+	      if ($(this).attr('id') === 'home') increase -= 120;
+
+	      $(this).height(increase);
+
+	    });
+
+	    return this;
+	  },
+
 	  render: function() {
 
 	    var that = this;
@@ -182,7 +201,7 @@ webpackJsonp([0],[
 
 	    return q.fcall(function(){
 
-	      console.log('elo ?');
+	      if (isMobile) that.setSizes();
 
 	      return [
 	        that.initSections(),
@@ -202,6 +221,7 @@ webpackJsonp([0],[
 
 	      that.$el.find('#loader').remove();
 	      that.$el.addClass('ready');
+
 	      return that.initStats();
 	    });
 

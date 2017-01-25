@@ -36,6 +36,8 @@ var Main = Backbone.View.extend({
 
   initialize: function(params) {
 
+    if (isMobile) this.$el.addClass('isMobile');
+
   },
 
   toggleMenu: function() {
@@ -162,6 +164,23 @@ var Main = Backbone.View.extend({
     return this;
   },
 
+  setSizes: function() {
+
+
+    var that = this;
+
+    this.$el.find('.setSize').each(function() {
+
+      var increase = $(this).height() + 120;
+      if ($(this).attr('id') === 'home') increase -= 120;
+
+      $(this).height(increase);
+
+    });
+
+    return this;
+  },
+
   render: function() {
 
     var that = this;
@@ -171,7 +190,7 @@ var Main = Backbone.View.extend({
 
     return q.fcall(function(){
 
-      console.log('elo ?');
+      if (isMobile) that.setSizes();
 
       return [
         that.initSections(),
@@ -191,6 +210,7 @@ var Main = Backbone.View.extend({
 
       that.$el.find('#loader').remove();
       that.$el.addClass('ready');
+
       return that.initStats();
     });
 

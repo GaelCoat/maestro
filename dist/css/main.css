@@ -787,7 +787,7 @@ body.ready #scene #mask .fonts .names.last h1 {
   height: 0px;
 }
 
-#scene #mask {
+body:not(.isMobile) #scene #mask {
   -webkit-mask: url(../img/sprite-1.png);
           mask: url(../img/sprite-1.png);
   -webkit-mask-size: 7500% 100%;
@@ -795,7 +795,7 @@ body.ready #scene #mask .fonts .names.last h1 {
 }
 
 
-body.ready #scene #mask {
+body.ready:not(.isMobile) #scene #mask {
   -webkit-animation: mask-play 1.4s steps(74) forwards 1s;
           animation: mask-play 1.4s steps(74) forwards 1s;
 }
@@ -847,6 +847,9 @@ body.ready #scene #mask {
   height: 90%;
   bottom: 0;
   z-index: 2;
+}
+
+body:not(.isMobile) #bio img.portrait{
   -webkit-mask: url(../img/sprite-2.png);
           mask: url(../img/sprite-2.png);
   -webkit-mask-size: 3000% 100%;
@@ -855,7 +858,7 @@ body.ready #scene #mask {
           mask-position: 100% 0;
 }
 
-#bio.loaded img.portrait{
+body:not(.isMobile) #bio.loaded img.portrait{
   -webkit-animation: mask-play 1.7s steps(29) forwards;
           animation: mask-play 1.7s steps(29) forwards;
 }
@@ -894,7 +897,7 @@ body.ready #scene #mask {
 }
 
 #bio .col-text span{
-  margin-top: 16px;
+  margin-top: 28px;
   display: block;
   color: #96abfb;
 }
@@ -1419,7 +1422,7 @@ body.ready #scene #mask {
   opacity: 0;
   -webkit-transition: .2s;
   transition: .2s;
-  background-color: rgba(14,30,90,.75);
+  background-color: rgba(0,0,0,.75);
 }
 
 #team #brands a:hover .overlay{
@@ -1444,7 +1447,7 @@ body.ready #scene #mask {
   -webkit-transition: .2s;
   transition: .2s;
   line-height: 16px;
-  background-color: rgba(8,15,55,.8);
+  background-color: rgba(0,0,0,.8);
 }
 
 #team #brands .overlay .btn:hover{
