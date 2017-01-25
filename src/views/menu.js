@@ -19,8 +19,10 @@ module.exports = Backbone.View.extend({
   renderMobile: function() {
 
     var tpl = _.template($('#tpl-menu-mobile').html());
+    var social = _.template($('#tpl-social-mobile').html());
 
     this.$el.prepend(tpl());
+    $('#home').append(social());
     return this;
   },
 
