@@ -197,7 +197,7 @@
   /* ---------------------------------------------------------- */
   #team {
     height: auto;
-    padding: 15vh 0;
+    padding: 25vw 0;
   }
 
   #team .align{
@@ -247,7 +247,7 @@
   }
 
   #stats #table ul.data li img.club {
-    top: 100px;
+    top: 0;
     height: 145px;
   }
 
