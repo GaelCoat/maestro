@@ -572,12 +572,14 @@ body.ready #social {
   top: 0;
   margin: auto;
   opacity: 0;
+  -webkit-transition: .25s;
   transition: .25s;
 }
 
 body.ready #home img#lights{
   opacity: .9;
-  transition-delay: 4s;
+  -webkit-transition-delay: 4s;
+          transition-delay: 4s;
 }
 
 
@@ -704,8 +706,10 @@ body.ready #dots .dot-wrapper.big{
   z-index: 50;
   top: -3%;
   opacity: 0;
+  -webkit-transition: opacity .2s;
   transition: opacity .2s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
 }
 
 body.ready #scene #mask img{
@@ -905,20 +909,23 @@ body:not(.isMobile) #bio.loaded img.portrait{
 #bio .col-text .each{
   display: block;
   opacity: 0;
-  transform: translate(0, 32px);
+  -webkit-transform: translate(0, 32px);
+          transform: translate(0, 32px);
+  -webkit-transition: .33s;
   transition: .33s;
 }
 
 #bio.loaded .col-text .each{
   opacity: 1;
-  transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
-#bio .col-text .each:nth-child(1){ transition-delay: .5s; }
-#bio .col-text .each:nth-child(2){ transition-delay: .6s; }
-#bio .col-text .each:nth-child(3){ transition-delay: .7s; }
-#bio .col-text .each:nth-child(4){ transition-delay: .8s; }
-#bio .col-text .each:nth-child(5){ transition-delay: .9s; }
+#bio .col-text .each:nth-child(1){ -webkit-transition-delay: .5s; transition-delay: .5s; }
+#bio .col-text .each:nth-child(2){ -webkit-transition-delay: .6s; transition-delay: .6s; }
+#bio .col-text .each:nth-child(3){ -webkit-transition-delay: .7s; transition-delay: .7s; }
+#bio .col-text .each:nth-child(4){ -webkit-transition-delay: .8s; transition-delay: .8s; }
+#bio .col-text .each:nth-child(5){ -webkit-transition-delay: .9s; transition-delay: .9s; }
 
 /* ---------------------------------------------------------- */
 /* ------------------------------------------ VIDEOS
