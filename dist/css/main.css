@@ -255,7 +255,7 @@ section.loaded h2.title{
   position: fixed;
   left: 40px;
   top: 40px;
-  z-index: 99;
+  z-index: 9999999;
   display: none;
 }
 
@@ -1466,7 +1466,7 @@ body.isMobile #stats #table ul.data li img.club.mobile{
 }
 
 #team #brands .overlay .btn:hover{
-  background-color: rgba(8,15,55,1);
+  background-color: rgba(0,0,0,1);
 }
 
 /* ---------------------------------------------------------- */
