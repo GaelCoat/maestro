@@ -26,11 +26,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pier';
+  src: url('./fonts/piersans-regular-webfont.woff2') format('woff2'),
+       url('./fonts/piersans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
+  text-rendering: optimizeLegibility;
 }
 
 *:focus {
@@ -42,6 +52,7 @@ body{
   background-color: #fff;
   height: 100%;
   text-align: left;
+  font-family: Pier;
 }
 
 body.modal-open,
@@ -291,7 +302,7 @@ section.loaded h2.title{
   color: #202020;
   vertical-align: middle;
   font-size: 19px;
-  font-family: Arial;
+  font-family: Pier;
   margin-right: 22px;
   -webkit-transition: .2s;
   transition: .2s;
@@ -436,7 +447,7 @@ body.ready #header ul{
   color: #202020;
   vertical-align: bottom;
   font-size: 19px;
-  font-family: Arial;
+  font-family: Pier;
   margin-right: 22px;
   -webkit-transition: .2s;
   transition: .2s;
@@ -547,6 +558,7 @@ body.ready #social {
 #home{
   border: 40px solid #fff;
   border-bottom: 0;
+  border-right-width: 39px;
   position: relative;
   text-align: center;
   background-color: #02f9fd;
@@ -788,30 +800,6 @@ body.ready #scene #mask {
           animation: mask-play 1.4s steps(74) forwards 1s;
 }
 
-
-/* #scene #mask {
-  -webkit-mask: url(../img/sprite-2.png);
-          mask: url(../img/sprite-2.png);
-  -webkit-mask-position: 100% 0;
-          mask-position: 100% 0;
-  -webkit-mask-size: 7100% 100%;
-          mask-size: 7100% 100%;
-  -webkit-animation: mask-play .8s steps(70) forwards 2s;
-          animation: mask-play .8s steps(70) forwards 2s;
-}
- */
-
-/* #scene #mask {
-  -webkit-mask: url(../img/sprite-3.png);
-          mask: url(../img/sprite-3.png);
-  -webkit-mask-size: 7400% 100%;
-          mask-size: 7400% 100%;
-  -webkit-mask-position: 100% 0;
-          mask-position: 100% 0;
-  -webkit-animation: mask-play 1.4s steps(73) forwards 2s;
-          animation: mask-play 1.4s steps(73) forwards 2s;
-} */
-
 @-webkit-keyframes mask-play {
   from {
     -webkit-mask-position: 100% 0;
@@ -841,13 +829,35 @@ body.ready #scene #mask {
   background-color: #0136ff;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+#bio .row{
+  text-align: right;
+  padding-right: 7%;
+}
+
+#bio .row h2{
+  color: #2e57f6;
 }
 
 #bio img.portrait{
   position: absolute;
-  left: 10%;
+  left: 5%;
   height: 90%;
   bottom: 0;
+  z-index: 2;
+  -webkit-mask: url(../img/sprite-2.png);
+          mask: url(../img/sprite-2.png);
+  -webkit-mask-size: 3000% 100%;
+          mask-size: 3000% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+}
+
+#bio.loaded img.portrait{
+  -webkit-animation: mask-play 1.7s steps(29) forwards;
+          animation: mask-play 1.7s steps(29) forwards;
 }
 
 #bio .transition{
@@ -873,6 +883,39 @@ body.ready #scene #mask {
   width: 100%;
   left: 0;
 }
+
+#bio .col-text{
+  color: #fff;
+  font-size: 20px;
+  display: inline-block;
+  text-align: left;
+  font-family: Pier;
+  margin-top: -32px;
+}
+
+#bio .col-text span{
+  margin-top: 16px;
+  display: block;
+  color: #96abfb;
+}
+
+#bio .col-text .each{
+  display: block;
+  opacity: 0;
+  transform: translate(0, 32px);
+  transition: .33s;
+}
+
+#bio.loaded .col-text .each{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+#bio .col-text .each:nth-child(1){ transition-delay: .5s; }
+#bio .col-text .each:nth-child(2){ transition-delay: .6s; }
+#bio .col-text .each:nth-child(3){ transition-delay: .7s; }
+#bio .col-text .each:nth-child(4){ transition-delay: .8s; }
+#bio .col-text .each:nth-child(5){ transition-delay: .9s; }
 
 /* ---------------------------------------------------------- */
 /* ------------------------------------------ VIDEOS
@@ -1359,7 +1402,7 @@ body.ready #scene #mask {
 #team #brands .col:first-child{ background: #000 url(../img/brands/adidas.png) no-repeat center / 50%;}
 #team #brands .cubes:nth-child(1){ background: #fff url(../img/brands/intersport.png) no-repeat center / 65%;}
 #team #brands .cubes:nth-child(2){ background: #d60224 url(../img/brands/citroen.png) no-repeat center / 50%;}
-#team #brands .cubes:nth-child(3){ background: #9b7d4a url(../img/brands/lv.png) no-repeat center / 35%;}
+#team #brands .cubes:nth-child(3){ background: #d60224  url(../img/brands/lv.png) no-repeat center / 60%;}
 #team #brands .cubes:nth-child(4){ background: #fff url(../img/brands/winamax.png) no-repeat center / 50%;}
 
 #team #brands a{

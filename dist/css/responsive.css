@@ -3,6 +3,18 @@
   #social {
     padding: 16px;
   }
+
+  #bio img.portrait {
+    left: 0%;
+  }
+
+  #bio .row {
+    padding-right: 3%;
+  }
+
+  #bio .col-text {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 1320px)  and (min-height: 830px) {
@@ -15,12 +27,21 @@
   #home img#mask {
     margin-right: -6vw;
   }
+
+  #bio img.portrait {
+    left: -10%;
+  }
+
+  #bio .row {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 1120px) {
 
   #home {
     border: 20px solid #fff;
+    border-right-width: 19px;
     border-bottom: 0;
   }
 
@@ -48,6 +69,14 @@
 
   #videos ul li:before {
     padding-top: 63%;
+  }
+
+  #bio .transition {
+    width: 20px;
+  }
+
+  #bio .col-text {
+    font-size: 16px;
   }
 
 }
@@ -96,6 +125,32 @@
   #home img#lights {
     left: -25%;
     width: 150%;
+  }
+
+  /* ---------------------------------------------------------- */
+  /* ------------------------------------------ BIO
+  /* ---------------------------------------------------------- */
+  #bio .transition {
+    display: none;
+  }
+
+  #bio img.portrait {
+    left: auto;
+    right: 0;
+  }
+
+  #bio .col-text {
+    font-size: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  #bio .col-text span {
+    margin-top: 32px;
+  }
+
+  #bio h2.title {
+    top: -18.2vw;
   }
 
   /* ---------------------------------------------------------- */

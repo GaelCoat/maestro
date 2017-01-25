@@ -10,12 +10,12 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(_, Backbone, $, q) {var Home = __webpack_require__(9);
-	var Menu = __webpack_require__(12);
-	var Video = __webpack_require__(13);
-	var Stats = __webpack_require__(14);
-	var Lightbox = __webpack_require__(16);
+	var Menu = __webpack_require__(13);
+	var Video = __webpack_require__(14);
+	var Stats = __webpack_require__(15);
+	var Lightbox = __webpack_require__(17);
 	var isMobile = __webpack_require__(10);
-	var Salvattore = __webpack_require__(17);
+	var Salvattore = __webpack_require__(18);
 
 	_.templateSettings = {
 	  interpolate: /\{\{(.+?)\}\}/g,
@@ -70,7 +70,7 @@ webpackJsonp([0],[
 
 	    var that = this;
 
-	    var sections = ['home', 'videos', 'stats', 'team', 'news'];
+	    var sections = ['home', 'bio', 'stats', 'team', 'news'];
 
 	    sections.forEach(function(section, id) {
 
@@ -182,6 +182,8 @@ webpackJsonp([0],[
 
 	    return q.fcall(function(){
 
+	      console.log('elo ?');
+
 	      return [
 	        that.initSections(),
 	        that.initHome(),
@@ -224,8 +226,9 @@ webpackJsonp([0],[
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var isMobile = __webpack_require__(10);
+	/* WEBPACK VAR INJECTION */(function(Backbone) {var isMobile = __webpack_require__(10);
 	var isTrash = __webpack_require__(11);
+	var Repulse = __webpack_require__(12);
 
 	module.exports = Backbone.View.extend({
 
@@ -235,26 +238,18 @@ webpackJsonp([0],[
 
 	  },
 
-	  renderImage: function() {
-
-	    var tpl = _.template($('#tpl-home-mask').html());
-
-	    this.$el.find('ul.cool-shit').after(tpl());
-	    return this;
-	  },
-
-	  renderVideo: function() {
-
-	    var tpl = _.template($('#tpl-home-video').html());
-
-	    this.$el.find('ul.cool-shit').after(tpl());
-	    return this;
-	  },
-
 	  render: function() {
 
-	    if (isMobile || isTrash) return this.renderImage();
-	    else return this.renderVideo();
+	    if (isMobile) {
+	      this.$el.find('#dots').remove();
+	      return this;
+	    }
+
+	    this.$el.find(".repulsed.slow").repulse({ offset: 0.8 });
+	    this.$el.find(".repulsed.medium").repulse({ offset: 2 });
+	    this.$el.find(".repulsed.fast").repulse({ offset: 4 });
+
+
 	    return this;
 	  },
 
@@ -262,7 +257,7 @@ webpackJsonp([0],[
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 10 */
@@ -282,13 +277,71 @@ webpackJsonp([0],[
 	    /MSIE 9/i.test(navigator.userAgent) ||
 	    /rv:11.0/i.test(navigator.userAgent) ||
 	    /Edge\/12./i.test(navigator.userAgent) ||
-	    window.navigator.userAgent.indexOf("Edge") > -1;
+	    window.navigator.userAgent.indexOf("Edge") > -1 ||
+	    navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 	}()
 
 
 /***/ },
 /* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(jQuery, _) {(function( $ ){
+
+	  var $window = $(window);
+
+	  var mousePos = { x: -1, y: -1 };
+	  var windowHeight = $window.height();
+	  var windowWidth = $window.width();
+
+	  $window.resize(function(){
+
+	    windowHeight = $window.height();
+	    windowWidth = $window.width();
+	  });
+
+	  $.fn.repulse = function (params) {
+
+	    // Default settings
+	    var settings = $.extend({
+	      offset: 2,
+	      container: window,
+	      fps: 50,
+	    }, params );
+
+	    // Global variables
+	    var $this = $(this);
+
+	    var update = _.throttle(function() {
+
+	      $this.each(function(){
+
+	        var transX = mousePos.x * (settings.offset / 100);
+	        var transY = mousePos.y * (settings.offset / 100);
+
+	        $(this).css({
+	          'transform': 'translate3d('+transX+'px,'+transY+'px, 0px)',
+	          '-webkit-transform': 'translate3d('+transX+'px,'+transY+'px, 0px)'
+	        });
+	      });
+
+	    }, 1000/settings.fps);
+
+	    $(settings.container).mousemove(function(e) {
+
+	      mousePos.x = (e.pageX || e.clientX) - (windowWidth/2);
+	      mousePos.y = (e.pageY || e.clientY) - (windowHeight/2);
+	      return update();
+	    });
+	  };
+
+	})(jQuery);
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(2)))
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var isMobile = __webpack_require__(10);
@@ -331,7 +384,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {
@@ -392,11 +445,11 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {var isMobile = __webpack_require__(10);
-	var stats = __webpack_require__(15);
+	var stats = __webpack_require__(16);
 
 	module.exports = Backbone.View.extend({
 
@@ -479,7 +532,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -626,7 +679,7 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Backbone, _, $) {
@@ -686,7 +739,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2), __webpack_require__(4)))
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
