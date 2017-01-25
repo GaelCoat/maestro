@@ -119,6 +119,7 @@
   #scene #mask .fonts {
     left: 2%;
     right: 0%;
+    top: 25%;
   }
 
   #scene #mask .fonts .names h1 {
@@ -247,7 +248,7 @@
   }
 
   #stats #table ul.data li img.club {
-    top: 0;
+    top: 50px;
     height: 145px;
   }
 
