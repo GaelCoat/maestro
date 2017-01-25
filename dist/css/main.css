@@ -776,13 +776,12 @@ body.ready #scene #mask .fonts .names.last h1 {
 }
 
 #scene #mask {
-  -webkit-mask-image: url(../img/sprite-1.png);
-          mask-image: url(../img/sprite-1.png);
-  -webkit-mask-size: 7500% 50%;
-          mask-size: 7500% 50%;
-  -webkit-mask-position: 100% 0;
-          mask-position: 100% 0;
+  -webkit-mask: url(../img/sprite-1.png);
+          mask: url(../img/sprite-1.png);
+  -webkit-mask-size: 7500% 100%;
+          mask-size: 7500% 100%;
 }
+
 
 body.ready #scene #mask {
   -webkit-animation: mask-play 1.4s steps(74) forwards 1s;
