@@ -14,8 +14,9 @@ script(type="text/template", id="tpl-img-popup")
 
 script(type="text/template", id="tpl-stats-data")
   li(data-season='{{year}}')
-    img.club(src='./img/clubs/{{data.club.name}}.png')
+    img.club.notMobile(src='./img/clubs/{{data.club.name}}.png')
     .centered
+      img.club.mobile(src='./img/clubs/{{data.club.name}}.png')
       .each
         h3
           b {{data.games.total}}

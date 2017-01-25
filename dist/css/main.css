@@ -1204,18 +1204,33 @@ body:not(.isMobile) #bio.loaded img.portrait{
   position: relative;
 }
 
-#stats #table ul.data li img.club{
+#stats #table ul.data li img.club.notMobile{
   position: absolute;
   right: 8%;
   top: -20px;
   height: 75px;
 }
 
+body.isMobile #stats #table ul.data li img.club.notMobile{
+  display: none;
+}
+
+#stats #table ul.data li img.club.mobile{
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+body.isMobile #stats #table ul.data li img.club.mobile{
+  display: block;
+}
 
 #stats #table ul.data li .centered{
   display: inline-block;
   vertical-align: middle;
   width: 100%;
+  position: relative;
 }
 
 #stats #table ul.data li .each{

@@ -140,7 +140,8 @@
   /* ------------------------------------------ BIO
   /* ---------------------------------------------------------- */
   #bio {
-    height: 112vh;
+    min-height: 112vh;
+    padding: 100px 0;
   }
 
   #bio .transition {
@@ -156,10 +157,11 @@
     font-size: 50px;
     position: relative;
     z-index: 2;
+    text-align: right;
   }
 
   #bio .col-text span {
-    margin-top: 32px;
+    margin-top: 70px;
   }
 
   #bio h2.title {
@@ -248,7 +250,7 @@
   }
 
   #stats #table ul.data li img.club {
-    top: 50px;
+    top: 0px;
     height: 145px;
   }
 
